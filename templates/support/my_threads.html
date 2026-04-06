@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}My chats{% endblock %}
+{% block content %}
+<h1>Your conversations</h1>
+<ul class="list-group">
+  {% for t in threads %}
+  <li class="list-group-item">
+    <a href="{% url 'support:chat_thread' t.pk %}">{{ t.subject }}</a>
+    <span class="text-muted small">{{ t.updated_at }}</span>
+  </li>
+  {% empty %}
+  <li class="list-group-item">No chats yet. <a href="{% url 'support:chat_start' %}">Start one</a>.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
