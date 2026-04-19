@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+{% block content %}
+<h1>Contact the shop</h1>
+<form method="post" class="col-lg-8">
+  {% csrf_token %}
+  {% for field in form %}
+  <div class="mb-3">
+    <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+    {{ field.errors }}
+    {{ field }}
+  </div>
+  {% endfor %}
+  <button type="submit" class="btn btn-primary">Send</button>
+</form>
+{% endblock %}
